@@ -183,88 +183,74 @@ def scienceunit_window (event):
     scienceunit_window.title('ScienceUnit Window')
     scienceunit_window.geometry('500x300')
 
-    #label Title
-    ttk.Label(scienceunit_window, text = "Select Unit", background = '#F0FFF0', foreground = '#FD6A02',
-                            font = ("arial", 20)).grid(column = 2, row = 1) 
-    ttk.Label(scienceunit_window,text='',width='18').grid(column=0,row=0)
-    ttk.Label(scienceunit_window,text='',width='15').grid(column=2,row=2)
-    ttk.Label(scienceunit_window,text='',width='15').grid(column=2,row=5)
-    ttk.Label(scienceunit_window,text='',width='15').grid(column=2,row=8)
-    ttk.Label(scienceunit_window,text='',width='15').grid(column=2,row=11)
+    '''unit_science  = {}
 
-    def temperature_window(event) :
-        temperature_window = Tk()
-        temperature_window.title('ThaiUnit to MatricUnit Measure Window')
-        temperature_window.geometry('740x300')
+    unit_science_dict = {}
 
-        unit_temperature  = {'Celsius' : 1 , 'Fahrenheit' : -17.78 , 
-                             'Kelvin' : 1 , 'Réaumur' : 1.25 }
-
-        unit_temperature_dict = {'Celsius' : '°C' , 'Fahrenheit' : '°F' , 'Kelvin' : 'K' , 'Réaumur' : '°R'}
-
-        def convert_temperature (event):
-            unit_ch = unit_choosen.get()
-            unit_con_ch = unit_converted_choosen.get()
-            user_input = int(input_entry.get())
-            resalt_label.configure(text=(str('%.3f'%((user_input*unit_temperature[unit_ch])/
-                                                    unit_temperature[unit_con_ch])))
-                                                    + ' ' + unit_temperature_dict[unit_con_ch])
+    def convert_science (event):
+        unit_ch = unit_choosen.get()
+        unit_con_ch = unit_converted_choosen.get()
+        user_input = int(input_entry.get())
+        resalt_label.configure(text=(str('%.3f'%((user_input*unit_science[unit_ch])/unit_science[unit_con_ch])))
+                                         + ' ' + unit_science_dict[unit_con_ch])'''
     
-        #Create Clear Funtion
-        def clear_unit_temperature (event) :
-            unit_choosen.set('')
-            unit_converted_choosen.set('')
-            resalt_label.configure(text = '0')
-            input_entry.delete(0,END)
+    #Create Clear Funtion
+    def clear_unit_science (event) :
+        unit_choosen.set('')
+        unit_converted_choosen.set('')
+        resalt_label.configure(text = '0')
+        input_entry.delete(0,END)
 
-        #Label for Title
-        ttk.Label(temperature_window, text = 'ThaiUnit to MatricUnit Measure', background = '#F0FFF0',
-                                      foreground ="#FD6A02", font = ("arial", 17)).grid(column = 1, row = 0)
-        ttk.Label(temperature_window, text = "  ",font = ("arial", 11)).grid(column = 0,row = 2 )    
-        ttk.Label(temperature_window, text = "Select Unit : ",font = ("arial", 11)).grid(column = 0,row = 5)
-        ttk.Label(temperature_window, text = " to ",font = ("arial", 11),width=10).grid(column = 2,row = 5 )
-        ttk.Label(temperature_window, text = "  ",font = ("arial", 11)).grid(column = 0,row = 6 ) 
+    #Label for Title
+    ttk.Label(scienceunit_window, text = 'ScienceUnit', background = '#F0FFF0',
+                                   foreground ="#FD6A02", font = ("arial", 17)).grid(column = 1, row = 0)
+    ttk.Label(scienceunit_window, text = "  ",font = ("arial", 11)).grid(column = 0,row = 2 )    
+    ttk.Label(scienceunit_window, text = "Select Unit : ",font = ("arial", 11)).grid(column = 0,row = 5)
+    ttk.Label(scienceunit_window, text = " to ",font = ("arial", 11),width=10).grid(column = 2,row = 5 )
+    ttk.Label(scienceunit_window, text = "  ",font = ("arial", 11)).grid(column = 0,row = 6 ) 
 
-        #Comboblox ThaiUnit
-        n = StringVar()
-        unit_choosen = ttk.Combobox(temperature_window, width = 27, textvariable = n)
-        unit_choosen ['values'] = ('Celsius','Fahrenheit','Kelvin','Réaumur')
-        unit_choosen.grid(column = 1 , row = 5)
-        unit_choosen.current() 
+    #Comboblox ThaiUnit
+    n = StringVar()
+    unit_choosen = ttk.Combobox(scienceunit_window, width = 27, textvariable = n)
+    unit_choosen ['values'] = ('ban','kwian','thang','liters','cubic centimaters','gallon(Br.)','cubic maters',
+                               'pound','kilogram','gram','ounce')
+    unit_choosen.grid(column = 1 , row = 5)
+    unit_choosen.current() 
 
-        n = StringVar()
-        unit_converted_choosen = ttk.Combobox(temperature_window, width = 27, textvariable = n)
-        unit_converted_choosen ['values'] = ('Celsius','Fahrenheit','Kelvin','Réaumur')
-        unit_converted_choosen.grid(column = 4 , row = 5)
-        unit_converted_choosen.current()
+    n = StringVar()
+    unit_converted_choosen = ttk.Combobox(scienceunit_window, width = 27, textvariable = n)
+    unit_converted_choosen ['values'] = ('ban','kwian','thang','liters','cubic centimaters','gallon(Br.)',
+                                         'cubic maters','pound','kilogram','gram','ounce')
+    unit_converted_choosen.grid(column = 4 , row = 5)
+    unit_converted_choosen.current()
 
-        #Input Lenght   
-        input_label = ttk.Label(temperature_window, text = " Input Your Number : ",font = ("arial", 11))
-        input_label.grid(column = 0,row = 7 )
+    #Input Lenght   
+    input_label = ttk.Label(scienceunit_window, text = " Input Your Number : ",font = ("arial", 11))
+    input_label.grid(column = 0,row = 7 )
 
-        input_entry = ttk.Entry (temperature_window,width='30')
-        input_entry.grid(column = 1,row = 7 )
+    input_entry = ttk.Entry (scienceunit_window,width='30')
+    input_entry.grid(column = 1,row = 7 )
 
-        ttk.Label(temperature_window, text = "  ",font = ("arial", 11)).grid(column = 0,row = 8 )  
-        ttk.Label(temperature_window, text = " to ",font = ("arial", 11),width=10).grid(column = 2,row = 7 )
+    ttk.Label(scienceunit_window, text = "  ",font = ("arial", 11)).grid(column = 0,row = 8 )  
+    ttk.Label(scienceunit_window, text = " to ",font = ("arial", 11),width=10).grid(column = 2,row = 7 )
 
-        resalt_label = ttk.Label(temperature_window, text = "0",font = ("arial", 11))
-        resalt_label.grid(column = 4,row = 7 )
+    resalt_label = ttk.Label(scienceunit_window, text = "0",font = ("arial", 11))
+    resalt_label.grid(column = 4,row = 7 )
 
-        enter_button = Button(temperature_window, text = " Enter ",font = ("arial", 11),
-                                                  background = 'red',foreground ="white")
-        enter_button.grid(column = 0,row = 9 )
-        enter_button.bind('<Button-1>',convert_temperature)
+    enter_button = Button(scienceunit_window, text = " Enter ",font = ("arial", 11),
+                                  background = 'red',foreground ="white")
+    enter_button.grid(column = 0,row = 9 )
+    #enter_button.bind('<Button-1>',convert_science)
 
-        clear_button = Button(temperature_window, text = " Clear ",font = ("arial", 11))
-        clear_button.grid(column = 1,row = 9 )
-        clear_button.bind('<Button-1>',clear_unit_temperature)
+    clear_button = Button(scienceunit_window, text = " Clear ",font = ("arial", 11))
+    clear_button.grid(column = 1,row = 9 )
+    #clear_button.bind('<Button-1>',clear_unit_science)
 
-        #Create Temperature Button
-    temperaturebutton = Button(scienceunit_window,text='Temperature Convert',font=('arial,7'),
+    #Create Temperature Button
+    sciencebutton = Button(scienceunit_window,text='Temperature Convert',font=('arial,7'),
                                                   background = '#FFF0F5',foreground='#1C2951',width='25')
-    temperaturebutton.grid(column=2,row=4)
-    temperaturebutton.bind('<Button-1>',temperature_window)
+    sciencebutton.grid(column=2,row=4)
+    sciencebutton.bind('<Button-1>',science_window)
 
     scienceunit_window.mainloop()
     
@@ -273,7 +259,7 @@ science_button = Button(start_window,text='Convert Science Unit',font=('arial,7'
                      background = '#FFF0F5',foreground='#1C2951' )
 science_button.grid(row=10,column=2)
 
-science_button.bind('<Button-1>',scienceunit_window)
+science_button.bind('<Button-1>',start_window)
 
 
 #Create About Window
