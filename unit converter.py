@@ -32,8 +32,8 @@ def lenghtunit_window (event):
         unit_ch = unit_choosen.get()
         unit_con_ch = unit_converted_choosen.get()
         user_input = int(input_entry.get())
-        resalt_label.configure(text=(str('%.2f'%((user_input*unit_lenght[unit_ch])/unit_lenght[unit_con_ch]))) + ' '
-                               + unit_lenght_dict[unit_con_ch])
+        resalt_label.configure(text=(str('%.2f'%((user_input*unit_lenght[unit_ch])/unit_lenght[unit_con_ch])))
+                                               + ' ' + unit_lenght_dict[unit_con_ch])
     
     #Create Clear Funtion
     def clear_unit_lenght (event) :
@@ -113,8 +113,8 @@ def measureunit_window (event):
         unit_ch = unit_choosen.get()
         unit_con_ch = unit_converted_choosen.get()
         user_input = int(input_entry.get())
-        resalt_label.configure(text=(str('%.3f'%((user_input*unit_measure[unit_ch])/unit_measure[unit_con_ch]))) + ' '
-                               + unit_measure_dict[unit_con_ch])
+        resalt_label.configure(text=(str('%.3f'%((user_input*unit_measure[unit_ch])/unit_measure[unit_con_ch])))
+                                         + ' ' + unit_measure_dict[unit_con_ch])
     
     #Create Clear Funtion
     def clear_unit_measure (event) :
@@ -196,8 +196,9 @@ def scienceunit_window (event):
         temperature_window = Tk()
         temperature_window.title('ThaiUnit to MatricUnit Measure Window')
         temperature_window.geometry('740x300')
-    
-        unit_temperature  = {'Celsius' : 1 , 'Fahrenheit' : -17.22, 'Kelvin' : -272.15 , 'Réaumur' : 1.25 }
+
+        unit_temperature  = {'Celsius' : 1 , 'Fahrenheit' : -17.78 , 
+                             'Kelvin' : 1 , 'Réaumur' : 1.25 }
 
         unit_temperature_dict = {'Celsius' : '°C' , 'Fahrenheit' : '°F' , 'Kelvin' : 'K' , 'Réaumur' : '°R'}
 
@@ -205,8 +206,9 @@ def scienceunit_window (event):
             unit_ch = unit_choosen.get()
             unit_con_ch = unit_converted_choosen.get()
             user_input = int(input_entry.get())
-            resalt_label.configure(text=(str('%.3f'%((user_input*unit_temperature[unit_ch])/unit_temperature[unit_con_ch]))) + ' '
-                                   + unit_temperature_dict[unit_con_ch])
+            resalt_label.configure(text=(str('%.3f'%((user_input*unit_temperature[unit_ch])/
+                                                    unit_temperature[unit_con_ch])))
+                                                    + ' ' + unit_temperature_dict[unit_con_ch])
     
         #Create Clear Funtion
         def clear_unit_temperature (event) :
