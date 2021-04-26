@@ -285,5 +285,4 @@ about_button = Button(start_window,text='About',font=('arial,7'),width='25',
 about_button.grid(row=12,column=2)
 about_button.bind('<Button-1>',about_window)
 
-
 start_window.mainloop()
