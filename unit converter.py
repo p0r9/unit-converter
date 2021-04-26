@@ -181,18 +181,26 @@ thai_to_matric_measurebutton.bind('<Button-1>',measureunit_window)
 def scienceunit_window (event):
     scienceunit_window = Tk()
     scienceunit_window.title('ScienceUnit Window')
-    scienceunit_window.geometry('500x300')
+    scienceunit_window.geometry('640x250')
+      
+    unit_science  = {'exa' : 10**18,'peta' : 10**15,'tera'  : 10**12 ,'giga' : 10**9 ,
+                     'mega' : 10**6,'kilo' : 10**3,'hector' : 10**2,'deca' : 10,
+                     'deci' : 10**-1 ,'centi' : 10**-2,'milli': 10**-3 , 
+                     'micro' : 10**-6,'nano': 10**-9,'pico' : 10**-12,
+                     'femto': 10**-15,'atto': 10**-18}
 
-    '''unit_science  = {}
-
-    unit_science_dict = {}
+    unit_science_dict = {'exa' : 'E' ,'peta' : 'P' ,'tera'  : 'T' ,'giga' : 'G' ,
+                     'mega' : 'M' ,'kilo' : 'k' ,'hector' : 'h' ,'deca' : 'da' ,
+                     'deci' : 'd' ,'centi' : 'c' ,'milli': 'm' , 
+                     'micro' : 'μ' ,'nano': 'n' ,'pico' : 'p' ,
+                     'femto': 'f' ,'atto': 'a' }
 
     def convert_science (event):
         unit_ch = unit_choosen.get()
         unit_con_ch = unit_converted_choosen.get()
         user_input = int(input_entry.get())
-        resalt_label.configure(text=(str('%.3f'%((user_input*unit_science[unit_ch])/unit_science[unit_con_ch])))
-                                         + ' ' + unit_science_dict[unit_con_ch])'''
+        resalt_label.configure(text=(str(((user_input*unit_science[unit_ch])/unit_science[unit_con_ch])))
+                                         + ' ' + unit_science_dict[unit_con_ch])
     
     #Create Clear Funtion
     def clear_unit_science (event) :
@@ -202,7 +210,7 @@ def scienceunit_window (event):
         input_entry.delete(0,END)
 
     #Label for Title
-    ttk.Label(scienceunit_window, text = 'ScienceUnit', background = '#F0FFF0',
+    ttk.Label(scienceunit_window, text = 'Scienceunit', background = '#F0FFF0',
                                    foreground ="#FD6A02", font = ("arial", 17)).grid(column = 1, row = 0)
     ttk.Label(scienceunit_window, text = "  ",font = ("arial", 11)).grid(column = 0,row = 2 )    
     ttk.Label(scienceunit_window, text = "Select Unit : ",font = ("arial", 11)).grid(column = 0,row = 5)
@@ -212,15 +220,15 @@ def scienceunit_window (event):
     #Comboblox ThaiUnit
     n = StringVar()
     unit_choosen = ttk.Combobox(scienceunit_window, width = 27, textvariable = n)
-    unit_choosen ['values'] = ('ban','kwian','thang','liters','cubic centimaters','gallon(Br.)','cubic maters',
-                               'pound','kilogram','gram','ounce')
+    unit_choosen ['values'] = ('exa','peta','tera','giga','mega','kilo','hector','deca',
+                     'deci','centi','milli', 'micro','nano','pico','femto','atto')
     unit_choosen.grid(column = 1 , row = 5)
     unit_choosen.current() 
 
     n = StringVar()
     unit_converted_choosen = ttk.Combobox(scienceunit_window, width = 27, textvariable = n)
-    unit_converted_choosen ['values'] = ('ban','kwian','thang','liters','cubic centimaters','gallon(Br.)',
-                                         'cubic maters','pound','kilogram','gram','ounce')
+    unit_converted_choosen ['values'] = ('exa','peta','tera','giga','mega','kilo','hector','deca',
+                     'deci','centi','milli', 'micro','nano','pico','femto','atto')
     unit_converted_choosen.grid(column = 4 , row = 5)
     unit_converted_choosen.current()
 
@@ -240,17 +248,11 @@ def scienceunit_window (event):
     enter_button = Button(scienceunit_window, text = " Enter ",font = ("arial", 11),
                                   background = 'red',foreground ="white")
     enter_button.grid(column = 0,row = 9 )
-    #enter_button.bind('<Button-1>',convert_science)
+    enter_button.bind('<Button-1>',convert_science)
 
     clear_button = Button(scienceunit_window, text = " Clear ",font = ("arial", 11))
     clear_button.grid(column = 1,row = 9 )
-    #clear_button.bind('<Button-1>',clear_unit_science)
-
-    #Create Temperature Button
-    sciencebutton = Button(scienceunit_window,text='Temperature Convert',font=('arial,7'),
-                                                  background = '#FFF0F5',foreground='#1C2951',width='25')
-    sciencebutton.grid(column=2,row=4)
-    sciencebutton.bind('<Button-1>',science_window)
+    clear_button.bind('<Button-1>',clear_unit_science)
 
     scienceunit_window.mainloop()
     
@@ -259,7 +261,7 @@ science_button = Button(start_window,text='Convert Science Unit',font=('arial,7'
                      background = '#FFF0F5',foreground='#1C2951' )
 science_button.grid(row=10,column=2)
 
-science_button.bind('<Button-1>',start_window)
+science_button.bind('<Button-1>',scienceunit_window)
 
 
 #Create About Window
